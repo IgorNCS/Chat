@@ -12,10 +12,10 @@ function updateMessagesOnScreen(messages) {
     const div_messages = document.querySelector('#messages');
 
     let list_messages = '<ul>'
-    messages.array.forEach(messages => {
-        list_messages +=`<li>${message}</li>`
-    });
-    let list_messages += '</ul>'
+    messages.forEach(message => {
+        list_messages += `<li>${message}</li>`
+    })
+    list_messages += '</ul>'
 
     div_messages.innerHTML= list_messages
 }
@@ -27,5 +27,6 @@ document.addEventListener('DOMContentLoaded',()=>{
         const message = document.forms['message_form_name']['msg'].value;
         document.forms['message_form_name']['msg'].value = '';
         socket.emit('new_message',{msg:message})
+        console.log(message)
     })
 })
